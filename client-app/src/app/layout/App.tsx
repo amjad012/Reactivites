@@ -1,10 +1,10 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Container, Header, List } from 'semantic-ui-react';
+import { Container} from 'semantic-ui-react';
 import { Activity } from '../models/activity';
 import NavBar from './NabBar';
 import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard';
-
+import {v4 as uuid} from 'uuid';
 
 function App() {
 
@@ -17,31 +17,33 @@ function App() {
       setActivities(response.data);
     })
   },[])
-function handleSelectActivity(id: string)
-{
+function handleSelectActivity(id: string){
   setSelectedActivity(activities.find(x => x.id === id))
 }
-function handleCancelSelectActivity()
-{
+
+function handleCancelSelectActivity(){
   setSelectedActivity(undefined)
 }
-function handleFormOpen(id?: string)
-{
+
+function handleFormOpen(id?: string){
   id ? handleSelectActivity(id) : handleCancelSelectActivity();
   setEditMode(true)
 }
-function handleFormClose()
-{
+
+function handleFormClose(){
   setEditMode(false);
 }
-function handleCreateOrEditActivity(activity: Activity)
-{
+function handleDeleteActivity(id:string){
+  setActivities([...activities.filter(x => x.id !== id)])
+}
+function handleCreateOrEditActivity(activity: Activity){
   activity.id 
   ? setActivities([...activities.filter(x => x.id !== activity.id),activity])
-  : setActivities([...activities, activity]);
+  : setActivities([...activities,{...activity, id:uuid()}]);
   setEditMode(false);
   setSelectedActivity(activity);
 }
+
   return (
     <>
     <NavBar openForm={handleFormOpen}/>  
@@ -55,6 +57,7 @@ function handleCreateOrEditActivity(activity: Activity)
           openForm={handleFormOpen}
           closeForm={handleFormClose}
           createOrEdit={handleCreateOrEditActivity}
+          deleteActivity={handleDeleteActivity}
         />
       </Container>     
     </>

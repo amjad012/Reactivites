@@ -1,24 +1,23 @@
 import React from "react";
-import { Button, Item, ItemHeader, Label, Segment } from "semantic-ui-react";
-
+import { Button, Item, Label, Segment } from "semantic-ui-react";
 import { Activity } from "../../../app/models/activity";
 
 interface Props{
     activities : Activity[]; 
     selectActivity:(id:string) => void;
+    deleteActivity:(id:string) => void;
     
 }
-export default function ActivitList({activities,selectActivity}:Props)
+export default function ActivitList({activities,selectActivity,deleteActivity}:Props)
 {
     return(
         
         <Segment>
             <Item.Group divided>
-                {activities.map(activity =>{
-                    return (
+                {activities.map(activity =>(               
                         <Item key={activity.id}>
                             <Item.Content>
-                                <ItemHeader as='a'>{activity.title}</ItemHeader>
+                                <Item.Header as='a'>{activity.title}</Item.Header>
                                  <Item.Meta>{activity.date}</Item.Meta>
                                  <Item.Description>
                                     <div>{activity.description}</div>
@@ -26,12 +25,12 @@ export default function ActivitList({activities,selectActivity}:Props)
                                 </Item.Description>
                                 <Item.Extra>
                                     <Button onClick={() => selectActivity(activity.id)} floated='right' content='View' color='blue' />
+                                    <Button onClick={() => deleteActivity(activity.id)} floated='right' content='Delete' color='red' />
                                     <Label basic content={activity.category} />
                                 </Item.Extra>
                             </Item.Content>
-                        </Item>
-                    );
-                })}
+                        </Item>                   
+                ))}
             </Item.Group>
         </Segment>
     )
