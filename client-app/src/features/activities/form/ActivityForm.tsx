@@ -15,7 +15,7 @@ export default function ActivityForm({activity: selectedActivity, closeForm,crea
         title:'',
         category:'',
         description:'',
-        date:'',
+         date:'',
         city:'',
         venue:''
     }
@@ -23,7 +23,7 @@ export default function ActivityForm({activity: selectedActivity, closeForm,crea
 
     function handleSubmit()
     {
-        // createOrEdit(activity);
+         createOrEdit(activity);
         
     }
 

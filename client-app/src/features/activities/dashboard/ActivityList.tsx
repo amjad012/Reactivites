@@ -19,7 +19,7 @@ export default function ActivitList({activities,selectActivity}:Props)
                         <Item key={activity.id}>
                             <Item.Content>
                                 <ItemHeader as='a'>{activity.title}</ItemHeader>
-                                {/* <Item.Meta>{activity.date}</Item.Meta> */}
+                                 <Item.Meta>{activity.date}</Item.Meta>
                                  <Item.Description>
                                     <div>{activity.description}</div>
                                     <div>{activity.city},{activity.venue}</div>
