@@ -1,11 +1,9 @@
-import React from "react";
+
 import { Button, Container, Menu } from "semantic-ui-react";
-import { useStore } from "../stores/stores";
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 export default function NavBar(){
-    const {activityStore} = useStore();
     return(
         <Menu inverted fixed='top'>
             <Container>
