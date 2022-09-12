@@ -33,7 +33,7 @@ export default observer (function ActivityDetails(){
             <Card.Content extra>
                 <ButtonGroup widths='2'>
                     <Button as={Link} to={`/manage/${activity.id}`} basic color='blue' content='Edit'/>
-                    <Button basic color='grey' content='Cancel'/>
+                    <Button as={Link}to={'/activities'}basic color='grey' content='Cancel'/>
                     
                 </ButtonGroup>
             </Card.Content>
