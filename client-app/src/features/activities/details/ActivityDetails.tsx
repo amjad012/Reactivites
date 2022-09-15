@@ -8,7 +8,7 @@ import ActivityDetailedChat from "./ActivityDetailedChat";
 import ActivityDetailedHeader from "./ActivityDetailedHeader";
 import ActivityDetailedInfo from "./ActivityDetailedInfo";
 import ActivityDetailedSidebar from "./ActivityDetailedSidebar";
-
+import React from "react";
 
 export default observer (function ActivityDetails(){
     const {activityStore} = useStore();
