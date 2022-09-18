@@ -12,7 +12,7 @@ namespace Application.Activities
             public Guid Id { get; set; }
 
         }
-        public class Handler : IRequestHandler<Query, <Result<Activity>>
+        public class Handler : IRequestHandler<Query,Result<Activity>>
         {
             private readonly DataContext _context;
             public Handler(DataContext context)
