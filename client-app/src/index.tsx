@@ -6,10 +6,11 @@ import './app/layout/styles.css';
 import App from './app/layout/App';
 import reportWebVitals from './reportWebVitals';
 import { store, StoreContext } from './app/stores/stores';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Router } from 'react-router-dom';
 import {createBrowserHistory} from 'history';
 
-export const history = createBrowserHistory();
+
+export const history = createBrowserHistory() ;
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,7 +18,7 @@ const root = ReactDOM.createRoot(
 root.render( 
   <StoreContext.Provider value={store}>
     <BrowserRouter>
-        <App />
+      <App/>
     </BrowserRouter>
     
   </StoreContext.Provider>
