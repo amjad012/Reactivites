@@ -17,10 +17,11 @@ axios.interceptors.response.use(async response =>{
         return response;
     
 },(error:AxiosError)=>{
-    const {data,status} = error.response!;
+    const {data,status,config} = error.response!;
+    
     switch(status){
         case 400:
-            toast.error('bad request');
+            toast.error('bad request');         
             break;    
         case 401:
             toast.error('unauthorised');
