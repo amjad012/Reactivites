@@ -8,6 +8,8 @@ import reportWebVitals from './reportWebVitals';
 import { store, StoreContext } from './app/stores/stores';
 import { BrowserRouter, Router } from 'react-router-dom';
 import {createBrowserHistory} from 'history';
+import 'react-datepicker/dist/react-datepicker.css';
+
 
 
 export const history = createBrowserHistory() ;
