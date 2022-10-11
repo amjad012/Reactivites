@@ -1,8 +1,10 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
+import { config } from 'process';
 import { toast } from 'react-toastify';
 import { history } from '../..';
 import { Activity } from '../models/activity';
 import { User, UserFormValues } from '../models/user';
+import { store } from '../stores/stores';
 
 const sleep=(delay: number) => {
     return new Promise((resolve) =>{
@@ -11,6 +13,13 @@ const sleep=(delay: number) => {
 }
 
 axios.defaults.baseURL='http://localhost:5000/api';
+
+axios.interceptors.request.use(config => {
+    const token = store.commonStore.token;
+    if(token) config.headers!.Authorization = `Bearer ${token}`
+    return config;
+})
+
 
 axios.interceptors.response.use(async response =>{
    

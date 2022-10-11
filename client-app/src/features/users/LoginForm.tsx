@@ -1,9 +1,10 @@
 import { ErrorMessage, Formik } from 'formik';
-import { Button, Form, Label } from 'semantic-ui-react';
+import { Button, Form, Header, Label } from 'semantic-ui-react';
 import MyTextInput from '../../app/common/form/MyTextInput';
 import React from 'react';
 import { useStore } from '../../app/stores/stores';
 import { observer } from 'mobx-react-lite';
+
 export default observer (function LoginForm()
 {
     const{userStore} = useStore(); 
@@ -16,6 +17,7 @@ export default observer (function LoginForm()
         {({handleSubmit, isSubmitting, errors}) =>
         (
             <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
+                <Header as='h2' content='Login to Reactivities' color='teal' textAlign='center'/>
                 <MyTextInput name='email' placeholder='Email'/>
                 <MyTextInput name='password' placeholder='Password' type='password'/>
                 <ErrorMessage
