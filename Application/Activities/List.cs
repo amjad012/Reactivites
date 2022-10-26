@@ -20,7 +20,6 @@ namespace Application.Activities
             public Handler(DataContext context, IMapper mapper)
             {
                 _mapper = mapper;
-
                 _context = context;
             }
 

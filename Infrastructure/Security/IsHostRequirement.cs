@@ -16,9 +16,9 @@ namespace Infrastructure.Security
         private readonly IHttpContextAccessor _httpContextAccessor;
         public IsHostRequirementHandler(DataContext dbContext, IHttpContextAccessor httpContextAccessor)
         {
-            _httpContextAccessor = httpContextAccessor;
+            
             _dbContext = dbContext;
-
+            _httpContextAccessor = httpContextAccessor;
         }
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, IsHostRequirement requirement)
@@ -27,8 +27,8 @@ namespace Infrastructure.Security
 
             if(userId == null) return Task.CompletedTask;
 
-            var activityId = Guid.Parse(_httpContextAccessor.HttpContext?.Request.RouteValues.
-                SingleOrDefault(x => x.Key == "id").Value?.ToString());
+            var activityId = Guid.Parse(_httpContextAccessor.HttpContext?.Request.RouteValues
+            .SingleOrDefault(x => x.Key == "id").Value?.ToString());
 
             var attendee = _dbContext.ActivityAttendees
             .AsNoTracking()

@@ -19,4 +19,4 @@ namespace Application.Core
                 .ForMember(d => d.Bio, o => o.MapFrom(s => s.AppUser.Bio));                    
         }
     }
-}
+} 
