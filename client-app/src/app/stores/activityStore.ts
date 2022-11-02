@@ -4,6 +4,7 @@ import { Activity } from "../models/activity";
 import {format} from 'date-fns';
 import { store } from "./stores";
 
+
 export default class ActivityStore{
     
     activityRegistry = new Map<string,Activity>();
@@ -76,7 +77,6 @@ export default class ActivityStore{
             activity.isHost = activity.hostUsername === user.username;
             activity.host = activity.attendees?.find(x => x.username === activity.hostUsername);
         }
-
         activity.date = new Date(activity.date!);
         this.activityRegistry.set(activity.id, activity);
     }

@@ -15,11 +15,11 @@ export default function ActivityListItem({ activity }: Props) {
         <Item.Group>
           <Item>
             <Item.Image size="tiny" circular src="/assets/user.png" />
-            <ItemContent>
+            <Item.Content>
               <Item.Header as={Link} to={`/activities/${activity.id}`}>
                 {activity.title}
               </Item.Header>
-              <Item.Description>Hosted by Bob{activity.host?.displayName}</Item.Description>
+               { <Item.Description>Hosted by Bob{activity.host?.displayName}</Item.Description>}
               {activity.isHost && (
                 <Item.Description>
                   <Label basic color='orange'>
@@ -34,7 +34,7 @@ export default function ActivityListItem({ activity }: Props) {
                   </Label>
                 </Item.Description>
               )}
-            </ItemContent>
+            </Item.Content>
           </Item>
         </Item.Group>
       </Segment>
