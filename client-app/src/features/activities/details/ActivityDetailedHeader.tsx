@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Header, Item, Segment, Image } from "semantic-ui-react";
+import { Button, Header, Item,Segment, Image } from "semantic-ui-react";
 import { Activity } from "../../../app/models/activity";
 import {format} from 'date-fns';
 import { useStore } from "../../../app/stores/stores";
@@ -33,6 +33,7 @@ export default observer(function ActivityDetailedHeader({ activity }: Props) {
           fluid
           style={activityImageStyle}
         />
+        
         <Segment style={activityImageTextStyle} basic>
           <Item.Group>
             <Item>
@@ -58,10 +59,10 @@ export default observer(function ActivityDetailedHeader({ activity }: Props) {
         </Button>
         ) : activity.isGoing ? (
 
-          <Button onClick={updateAttendance}>Cancel attendance</Button>
+          <Button loading={loading} onClick={updateAttendance}>Cancel attendance</Button>
         ) : (
 
-          <Button onClick={updateAttendance} color="teal">Join Activity</Button>
+          <Button loading={loading} onClick={updateAttendance} color="teal">Join Activity</Button>
         )}                 
       </Segment>
     </Segment.Group>
