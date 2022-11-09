@@ -1,0 +1,16 @@
+{
+    "Logging": {
+      "LogLevel": {
+        "Default": "Information",
+        "Microsoft": "Warning",
+        "Microsoft.Hosting.Lifetime": "Information"
+      }
+    },
+    "AllowedHosts": "*",
+    "Cloudinary":{
+        "CloudName":"dwhy4fyjf",
+        "ApiKey":"589186211885189",
+        "ApiSecret": "Ryw9dCVCrSFxkG2xOADK6OVzfKE"
+    }
+
+  }
