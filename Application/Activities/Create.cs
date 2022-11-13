@@ -44,7 +44,7 @@ namespace Application.Activities
                 
                 var attendee = new ActivityAttendee
                 {
-                    AppUser = user,
+                    AppUser = user!,
                     Activity = request.Activity,
                     IsHost = true
                 };                

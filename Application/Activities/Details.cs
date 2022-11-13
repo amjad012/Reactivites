@@ -33,7 +33,7 @@ namespace Application.Activities
                 .ProjectTo<ActivityDto>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync(x => x.Id == request.Id);            
 
-                return Result<ActivityDto>.Success(activity);
+                return Result<ActivityDto>.Success(activity!);
             }
         }
     }
