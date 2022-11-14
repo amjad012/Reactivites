@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Container } from 'semantic-ui-react';
-import NavBar from './NabBar';
+import NavBar from './NavBar';
 import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard';
 import { observer } from 'mobx-react-lite';
 import { Route, Switch, useLocation } from 'react-router-dom';
@@ -15,6 +15,7 @@ import LoginForm from '../../features/users/LoginForm';
 import { useStore } from '../stores/stores';
 import LoadingComponent from './LoadingComponent';
 import ModalContainer from '../common/modals/ModalContainer';
+import PrfoilePage from '../../features/profiles/ProfilePage';
 
 function App() {
   const location = useLocation();
@@ -45,6 +46,7 @@ if(!commonStore.appLoaded) return <LoadingComponent content='Loading App...'/>
                 <Route exact path='/activities' component={ActivityDashboard} />
                 <Route path='/activities/:id' component={ActivityDetails} />
                 <Route key={location.key} path={['/createActivity', '/manage/:id']} component={ActivityForm} />
+                <Route path='/profiles/:username' component={PrfoilePage} />
                 <Route path='/errors' component={TestErrors} />
                 <Route path='/server-error' component={ServerError} />
                 <Route path='/login' component={LoginForm} />

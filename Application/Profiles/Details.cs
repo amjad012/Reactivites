@@ -34,7 +34,7 @@ namespace Application.Profiles
                 .ProjectTo<Profile>(_mapper.ConfigurationProvider)
                     .SingleOrDefaultAsync(x => x.UserName == request.Username);
             
-            if(user == null) return null;
+            if(user == null) return null!;
 
             return Result<Profile>.Success(user);
         }
