@@ -2,7 +2,7 @@
 import { Button, Container, Menu,Image, Dropdown, DropdownMenu } from "semantic-ui-react";
 import { Link, NavLink } from 'react-router-dom';
 import React from 'react';
-import { useStore } from "../stores/stores";
+import { useStore } from "../stores/store";
 import { observer } from "mobx-react-lite";
 
 

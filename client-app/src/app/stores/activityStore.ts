@@ -2,7 +2,7 @@ import {makeAutoObservable, runInAction } from "mobx"
 import agent from "../api/agent";
 import { Activity, ActivityFormvalues } from "../models/activity";
 import {format} from 'date-fns';
-import { store } from "./stores";
+import { store } from "./store";
 import { Profile } from "../models/profile";
 
 

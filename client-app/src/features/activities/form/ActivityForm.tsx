@@ -3,7 +3,7 @@ import React, { useState,useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { Button, Header, Segment } from "semantic-ui-react";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
-import { useStore } from "../../../app/stores/stores";
+import { useStore } from "../../../app/stores/store";
 import {v4 as uuid} from 'uuid';
 import {Formik,Form} from 'formik';
 import * as Yub from 'yup';

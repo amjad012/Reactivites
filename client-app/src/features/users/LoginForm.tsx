@@ -2,7 +2,7 @@ import { ErrorMessage, Formik } from 'formik';
 import { Button, Form, Header, Label } from 'semantic-ui-react';
 import MyTextInput from '../../app/common/form/MyTextInput';
 import React from 'react';
-import { useStore } from '../../app/stores/stores';
+import { useStore } from '../../app/stores/store';
 import { observer } from 'mobx-react-lite';
 
 export default observer (function LoginForm()
