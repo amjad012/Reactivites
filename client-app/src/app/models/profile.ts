@@ -1,3 +1,4 @@
+import { observe } from "mobx";
 import { User } from "./user";
 
 export interface Profile {

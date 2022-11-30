@@ -68,7 +68,7 @@ export default observer(function ProfilePhotos({profile}: Props) {
                                             loading={target === photo.id && loading}
                                             onClick={e => handleDeletePhoto(photo, e)}
                                             disabled={photo.isMain}
-                                            name={photo.id}/>  
+                                            name={photo}/>  
                                     </Button.Group>
                                 {/* )} */}
                             </Card>

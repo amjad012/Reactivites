@@ -19,7 +19,7 @@ export default class ProfileStore {
         }
         return false;
     }
-
+    
     loadProfile = async (username: string) => {
 
         this.loadingProfile = true;

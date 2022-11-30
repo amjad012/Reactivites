@@ -16,6 +16,7 @@ import { useStore } from '../stores/store';
 import LoadingComponent from './LoadingComponent';
 import ModalContainer from '../common/modals/ModalContainer';
 import PrfoilePage from '../../features/profiles/ProfilePage';
+import ProfilePage from '../../features/profiles/ProfilePage';
 
 function App() {
   const location = useLocation();
@@ -40,20 +41,21 @@ if(!commonStore.appLoaded) return <LoadingComponent content='Loading App...'/>
         path={'/(.+)'}
         render={() => (
           <>
-            <NavBar />
-            <Container style={{ marginTop: '7em' }}>
-              <Switch>
-                <Route exact path='/activities' component={ActivityDashboard} />
-                <Route path='/activities/:id' component={ActivityDetails} />
-                <Route key={location.key} path={['/createActivity', '/manage/:id']} component={ActivityForm} />
-                <Route path='/profiles/:username' component={PrfoilePage} />
-                <Route path='/errors' component={TestErrors} />
-                <Route path='/server-error' component={ServerError} />
-                <Route path='/login' component={LoginForm} />
-                <Route component={NotFound} />
-              </Switch>
-
-            </Container>
+            <NavBar/>
+    <Container style={{marginTop:'7em'}}>
+      <Switch>
+        <Route exact path ='/' component={HomePage} />
+        <Route exact path = '/activities' component={ActivityDashboard} />
+        <Route path = '/activities/:id' component={ActivityDetails} />
+        <Route key={location.key} path = {['/createActivity','/manage/:id']} component={ActivityForm} />
+        <Route path='/profiles/:username' component={ProfilePage} />
+        <Route path='/errors' component={TestErrors} />
+        <Route path='/server-error' component={ServerError} />
+        <Route path='/server-error' component={ServerError} />
+        <Route path='/login' component={LoginForm} />
+        <Route component={NotFound} />
+      </Switch>
+    </Container>
           </>
         )}
       />
