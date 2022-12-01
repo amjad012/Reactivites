@@ -1,42 +1,38 @@
-import { observer } from 'mobx-react-lite';
-import React, { useState } from 'react';
-import { Button, Card, Grid, Header, Icon, Item, Segment, Tab, TabPane } from 'semantic-ui-react';
-import EditProfileWidget from '../../app/common/editProfile/EditProfileWidget';
-import { Profile } from '../../app/models/profile';
-import { useStore } from '../../app/stores/store';
+import React, { useState } from "react";
+import { useStore } from "../../app/stores/store";
+import { Button, Grid, Header, Tab } from "semantic-ui-react";
+import ProfileEditForm from "../../app/common/editProfile/ProfileEditForm";
+import { observer } from "mobx-react-lite";
 
-
-interface Props {
-    profile : Profile;
-}
-
-export default observer (function ProfileAbout({profile}: Props) {
-    const{profileStore:{isCurrentUser}} = useStore();
-    const[editProfileMode, setEditProfileMode] = useState(false);
-    return (
-        <Tab.Pane>
-            <Grid>
-                <Grid.Column width={16}>                   
-                <Header icon='user' as='h3'content={'About ' + profile.displayName}/>
-                {/* {isCurrentUser} */}
-                <Button floated='right' basic 
-                    content={editProfileMode ?'Cancel' : 'Edit Profile'}
-                    onClick={() => setEditProfileMode(!editProfileMode)}
-                    />
-                </Grid.Column>
-                <Grid.Column width={16}>
-                    {editProfileMode? (
-                        <EditProfileWidget profile={profile} />
-
-                    ) : (
-                        <Card.Group>
-                            
-                        </Card.Group>
-                    )
-                }
-                </Grid.Column>
-            </Grid>
-        </Tab.Pane>
-        
-    )
-})
+export default observer(function ProfileAbout() {
+  const { profileStore } = useStore();
+  const { isCurrentUser, profile } = profileStore;
+  const [editMode, setEditMode] = useState(false);
+  return (
+    <Tab.Pane>
+      <Grid>
+        <Grid.Column width="16">
+          <Header
+            floated="left"
+            icon="user"
+            content={"About " + profile?.displayName} />
+          {/* {isCurrentUser && ( */}
+            <Button
+              floated="right"
+              basic
+              content={editMode ? "Cancel" : "Edit Profile"}
+              onClick={() => setEditMode(!editMode)}
+            />
+          {/* )} */}
+        </Grid.Column>
+        <Grid.Column width="16">
+          {editMode ? (
+            <ProfileEditForm setEditMode={setEditMode} />
+          ) : (
+            <span style={{ whiteSpace: "pre-wrap" }}>{profile?.bio}</span>
+          )}
+        </Grid.Column>
+      </Grid>
+    </Tab.Pane>
+  );
+});

@@ -54,8 +54,11 @@ export default class UserStore{
             throw error;
         }
     }
-    setImage = (image: string) => { // helping method for uploadPhoto
+    setImage = (image: string) => { // helper method for uploadPhoto
         if(this.user) this.user.image = image
         
     }
+    setDisplayName = (name: string) => {
+        if (this.user) this.user.displayName = name; // helper method to set the display name
+       }
 }

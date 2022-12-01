@@ -78,8 +78,9 @@ const Profiles = {
             headers:{'Content-type' : 'multipart/form-data'}
         })
     },
-    setMainPhoto:(id:string) => requests.post(`/photos/${id}/setMain`,{}),
-    deletePhoto: (id:string) => requests.del(`/photos/${id}`)
+    setMainPhoto:(id:string) => requests.post(`/photos/${id}/setMain`,{}),// set a photo to be main photo in user profile
+    deletePhoto: (id:string) => requests.del(`/photos/${id}`), // for delete photo from user profile
+    updateProfile:(profile:Partial<Profile>) => requests.put(`/profiles`, profile) // for update profile details
 }
 
 const agent = {
