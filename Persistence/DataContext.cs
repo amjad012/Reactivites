@@ -33,6 +33,12 @@ namespace Persistence
             .HasOne(u => u.Activity)
             .WithMany(a => a.Attendees)
             .HasForeignKey(aa => aa.ActivityId);
+
+            builder.Entity<Comment>()
+            .HasOne(a => a.Activity)
+            .WithMany(c => c.Comments)
+            .OnDelete(DeleteBehavior.Cascade);
+            // if we delete an activity, it will delete the comments that inside this activity
         }
     }
 }
