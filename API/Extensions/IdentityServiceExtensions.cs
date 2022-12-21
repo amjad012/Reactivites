@@ -32,6 +32,21 @@ namespace API.Extensions
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
+                opt.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        var accessToken = context.Request.Query["access_ token"];
+                        var path = context.HttpContext.Request.Path;
+                        if(!string.IsNullOrEmpty(accessToken) && (path.StartsWithSegments("/chat")))
+                        {
+                            context.Token = accessToken;
+                        }
+                        return Task.CompletedTask;
+                        //So this is going to allow us to get the token from our query
+                        //string that we send up with our signalR
+                    }
+                };
             });
             services.AddAuthorization(opt => {
                 opt.AddPolicy("IsActivityHost", policy =>
