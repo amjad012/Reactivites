@@ -179,4 +179,7 @@ export default class ActivityStore{
             runInAction(() => this.loading = false);
         }
     }
+    clearSelectedActivity = () => {
+        this.selectedActivity = undefined; // method to clear selected activity from memory when we leave activity page
+    }
 }
