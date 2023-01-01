@@ -33,9 +33,9 @@ namespace Application.Activities
             public async Task<Result<ActivityDto>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var activity = await _context.Activities
-                .ProjectTo<ActivityDto>(_mapper.ConfigurationProvider, 
-                    new {currnetUserName = _userAccessor.GetUsername()})
-                .FirstOrDefaultAsync(x => x.Id == request.Id);
+                    .ProjectTo<ActivityDto>(_mapper.ConfigurationProvider, 
+                        new {currnetUserName = _userAccessor.GetUsername()})
+                    .FirstOrDefaultAsync(x => x.Id == request.Id);
 
                 return Result<ActivityDto>.Success(activity!);
             }
