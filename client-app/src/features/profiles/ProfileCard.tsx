@@ -5,6 +5,7 @@ import { Card, Icon, Image } from "semantic-ui-react";
 import { Profile } from "../../app/models/profile";
 import { useStore } from "../../app/stores/store";
 import UserStore from "../../app/stores/userStore";
+import FollowButton from "./FollowButton";
 
 interface Props {
   profile: Profile;
@@ -25,8 +26,10 @@ export default observer(function ProfileCard({ profile }: Props) {
         <Card.Description>{profile.bio}</Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <Icon name="user" /> 20 Followers
+        <Icon name="user" /> {profile.followersCount} followers
       </Card.Content>
+      <FollowButton profile={profile}/>
+
     </Card>
   );
 });

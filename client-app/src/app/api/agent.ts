@@ -80,7 +80,9 @@ const Profiles = {
     },
     setMainPhoto:(id:string) => requests.post(`/photos/${id}/setMain`,{}),// set a photo to be main photo in user profile
     deletePhoto: (id:string) => requests.del(`/photos/${id}`), // for delete photo from user profile
-    updateProfile:(profile:Partial<Profile>) => requests.put(`/profiles`, profile) // for update profile details
+    updateProfile:(profile:Partial<Profile>) => requests.put(`/profiles`, profile), // for update profile details
+    updateFollowing: (username: string) => requests.post(`/follow/${username}`, {})//to update the following
+  
 }
 
 const agent = {

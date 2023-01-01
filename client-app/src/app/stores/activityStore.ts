@@ -182,4 +182,17 @@ export default class ActivityStore{
     clearSelectedActivity = () => {
         this.selectedActivity = undefined; // method to clear selected activity from memory when we leave activity page
     }
+
+    //method to update the attendees inside each activity that we have
+    //inside our registry, because they're the activites that are displayed in the user interface
+    updateAttendeeFollowing = (username:string) => {
+        this.activityRegistry.forEach(activity => {
+            activity.attendees?.forEach(attendee => {
+                if(attendee.username === username){
+                    attendee.following ? attendee.followersCount-- :attendee.followersCount++;
+                    attendee.following = !attendee.following;
+                }
+            })
+        })
+    }
 }
