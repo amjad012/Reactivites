@@ -28,11 +28,11 @@ namespace Application.Comments
             {
                 var comments = await _context.Comments
                     .Where(x => x.Activity.Id == request.ActivityId)
-                    .OrderByDescending(x => x.CreatedAt) // the newest comment at the top and the oldest at the bottom
+                    .OrderByDescending(x => x.CreatedAt)
                     .ProjectTo<CommentDto>(_mapper.ConfigurationProvider)
                     .ToListAsync();
 
-                return Result<List<CommentDto>>.Success(comments);   
+                return Result<List<CommentDto>>.Success(comments);
             }
         }
     }

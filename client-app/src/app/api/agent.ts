@@ -14,6 +14,8 @@ const sleep=(delay: number) => {
 
 axios.defaults.baseURL='http://localhost:5000/api';
 
+const responseBody = <T>(response: AxiosResponse<T>) => response.data;
+
 axios.interceptors.request.use(config => {
     const token = store.commonStore.token;
     if(token) config.headers!.Authorization = `Bearer ${token}`
@@ -27,8 +29,7 @@ axios.interceptors.response.use(async response =>{
         return response;
     
 },(error:AxiosError)=>{
-    const {data,status,config} = error.response!;
-    
+    const {data, status, config} = error.response as AxiosResponse;
     switch(status){
         case 400:
             toast.error('bad request');         
@@ -46,7 +47,7 @@ axios.interceptors.response.use(async response =>{
     return Promise.reject(error) 
 }
 )
-const responseBody = <T>(response: AxiosResponse<T>) => response.data;
+
 
 const requests = {
     get:<T>(url:string) => axios.get<T>(url).then(responseBody),
@@ -81,8 +82,9 @@ const Profiles = {
     setMainPhoto:(id:string) => requests.post(`/photos/${id}/setMain`,{}),// set a photo to be main photo in user profile
     deletePhoto: (id:string) => requests.del(`/photos/${id}`), // for delete photo from user profile
     updateProfile:(profile:Partial<Profile>) => requests.put(`/profiles`, profile), // for update profile details
-    updateFollowing: (username: string) => requests.post(`/follow/${username}`, {})//to update the following
-  
+    updateFollowing: (username: string) => requests.post(`/follow/${username}`, {}),//to update the following
+    listFollowings: (username: string, predicate: string) => requests
+        .get<Profile[]>(`/follow/${username}?predicate=${predicate}`)
 }
 
 const agent = {

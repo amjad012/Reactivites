@@ -12,7 +12,6 @@ namespace Application.Activities
         public class Command : IRequest<Result<Unit>>
         {
             public Guid Id { get; set; }
-
         }
 
         public class Handler : IRequestHandler<Command, Result<Unit>>
@@ -31,37 +30,37 @@ namespace Application.Activities
                     .Include(a => a.Attendees).ThenInclude(u => u.AppUser)
                     .SingleOrDefaultAsync(x => x.Id == request.Id);
 
-                    if(activity == null) return null!;
+                if (activity == null) return null;
 
-                    var user = await _context.Users.FirstOrDefaultAsync(x => 
-                    x.UserName == _userAccessor.GetUsername());
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == _userAccessor.GetUsername());
 
-                    if(user == null) return null!;
+                if (user == null) return null;
 
-                    var hostUsername = activity.Attendees.FirstOrDefault(x => x.IsHost)?.AppUser?.UserName;
-                    
-                    var attendance = activity.Attendees.FirstOrDefault(x => x.AppUser!.UserName == user.UserName);
+                var hostUsername = activity.Attendees.FirstOrDefault(x => x.IsHost)?.AppUser.UserName;
 
-                    if(attendance != null && hostUsername == user.UserName)
-                        activity.IsCancelled = !activity.IsCancelled;
+                var attendance = activity.Attendees.FirstOrDefault(x => x.AppUser.UserName == user.UserName);
 
-                    if(attendance != null && hostUsername != user.UserName)
-                        activity.Attendees.Remove(attendance);
+                if (attendance != null && hostUsername == user.UserName)
+                    activity.IsCancelled = !activity.IsCancelled;
 
-                    if(attendance == null )
+                if (attendance != null && hostUsername != user.UserName)
+                    activity.Attendees.Remove(attendance);
+
+                if (attendance == null)
+                {
+                    attendance = new ActivityAttendee
                     {
-                        attendance = new ActivityAttendee
-                        {
-                            AppUser = user,
-                            Activity = activity,
-                            IsHost = false
-                        };
+                        AppUser = user,
+                        Activity = activity,
+                        IsHost = false
+                    };
 
-                        activity.Attendees.Add(attendance);
-                    }        
-                    var result = await _context.SaveChangesAsync() > 0; 
+                    activity.Attendees.Add(attendance);
+                }
 
-                    return result ? Result<Unit>.Success(Unit.Value) : Result<Unit>.Failure("Problem updating attendance");
+                var result = await _context.SaveChangesAsync() > 0;
+
+                return result ? Result<Unit>.Success(Unit.Value) : Result<Unit>.Failure("Problem updating attendance");
             }
         }
     }

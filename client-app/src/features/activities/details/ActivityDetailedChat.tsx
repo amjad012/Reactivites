@@ -1,11 +1,11 @@
-import { Formik, Form, Field, FieldProps } from 'formik'
+import { Formik, Form, Field, FieldProps } from 'formik';
 import { observer } from 'mobx-react-lite'
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { Segment, Header, Comment, Loader } from 'semantic-ui-react'
 import { useStore } from '../../../app/stores/store';
 import * as Yup from 'yup';
-import { formatDistanceToNow } from 'date-fns'
+import { formatDistanceToNow } from 'date-fns';
 
 interface Props {
     activityId: string;
@@ -50,7 +50,7 @@ export default observer(function ActivityDetailedChat({ activityId }: Props) {
                                     <div style={{ position: 'relative' }}>
                                         <Loader active={isSubmitting} />
                                         <textarea
-                                            placeholder='Enter your comment (Enter to submit, SHIFT + enter for new line)'
+                                            placeholder='Enter your comment (Enter to submit, SHIFT + Enter for new line)'
                                             rows={2}
                                             {...props.field}
                                             onKeyPress={e => {
@@ -74,9 +74,7 @@ export default observer(function ActivityDetailedChat({ activityId }: Props) {
                         <Comment key={comment.id}>
                             <Comment.Avatar src={comment.image || '/assets/user.png'} />
                             <Comment.Content>
-                                <Comment.Author as={Link} to={`/profiles/${comment.username}`}>
-                                    {comment.displayName}
-                                </Comment.Author>
+                                <Comment.Author as={Link} to={`/profiles/${comment.username}`}>{comment.displayName}</Comment.Author>
                                 <Comment.Metadata>
                                     <div>{formatDistanceToNow(comment.createdAt)} ago</div>
                                 </Comment.Metadata>
@@ -84,6 +82,8 @@ export default observer(function ActivityDetailedChat({ activityId }: Props) {
                             </Comment.Content>
                         </Comment>
                     ))}
+
+
                 </Comment.Group>
             </Segment>
         </>

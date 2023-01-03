@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Application.Core;
 using Application.Interfaces;
 using AutoMapper;
@@ -16,8 +12,7 @@ namespace Application.Followers
     {
         public class Query : IRequest<Result<List<Profiles.Profile>>>
         {
-            public string Predicate { get; set; }//what do we want to return to, we want to return a list of followers or do
-            //we want to return a list of users that is following that user?
+            public string Predicate { get; set; }
             public string Username { get; set; }
         }
 
@@ -37,7 +32,7 @@ namespace Application.Followers
 
             public async Task<Result<List<Profiles.Profile>>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var profiles = new List<Profiles.Profile>(); //variable to store these profiles
+                var profiles = new List<Profiles.Profile>();
 
                 switch (request.Predicate)
                 {

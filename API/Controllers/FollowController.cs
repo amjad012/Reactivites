@@ -1,7 +1,5 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Application.Followers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
@@ -10,10 +8,10 @@ namespace API.Controllers
         [HttpPost("{username}")]
         public async Task<IActionResult> Follow(string username)
         {
-            return HandleResult(await Mediator.Send(new FollowToggle.Command { TargetUsername = username }));
+            return HandleResult(await Mediator.Send(new FollowToggle.Command
+            { TargetUsername = username }));
         }
-        
-        //for following and followers
+
         [HttpGet("{username}")]
         public async Task<IActionResult> GetFollowings(string username, string predicate)
         {
