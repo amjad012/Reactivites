@@ -20,7 +20,7 @@ export default class UserStore{
             const user = await agent.Account.login(creds);
             store.commonStore.setToken(user.token);
             runInAction(()=> this.user =user );
-            history.push('.activities');
+            history.push('/activities');
             store.modalStore.closeModal();
         }catch(error)
         {
@@ -55,10 +55,13 @@ export default class UserStore{
         }
     }
     setImage = (image: string) => { // helper method for uploadPhoto
-        if(this.user) this.user.image = image
+        if(this.user) this.user.image = image;
         
     }
     setDisplayName = (name: string) => {
         if (this.user) this.user.displayName = name; // helper method to set the display name
        }
+    setUserPhoto = (url: string) => {
+        if (this.user) this.user.image = url;
+    }
 }

@@ -8,18 +8,16 @@ import FollowButton from './FollowButton';
 interface Props {
     profile: Profile
 }
-
-export default observer(function ProfileCard({ profile }: Props) {
-
-  // function to restrict the amount of text displayed in 
+// function to restrict the amount of text displayed in 
      //the attendee profile cards
+export default observer(function ProfileCard({ profile }: Props) {
     function truncate(str: string | undefined) {
         if (str) {
             return str.length > 40 ? str.substring(0, 37) + '...' : str;
         }
     }
 
-     return (
+    return (
         <Card as={Link} to={`/profiles/${profile.username}`}>
             <Image src={profile.image || '/assets/user.png'} />
             <Card.Content>
