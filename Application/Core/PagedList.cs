@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Core
 {
-    //his page list is going to be used for anything, any type of list in our application
     public class PagedList<T> : List<T>
     {
         public PagedList(IEnumerable<T> items, int count, int pageNumber, int pageSize)

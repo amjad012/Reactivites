@@ -24,3 +24,9 @@ export interface Photo {
     url: string;
     isMain: boolean;
 }
+export interface UserActivity { //interface that all the props matches the prop getting back from api
+    id: string;
+    title: string;
+    category: string;
+    date: Date;
+}
