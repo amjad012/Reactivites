@@ -33,7 +33,9 @@ function App() {
 if(!commonStore.appLoaded) return <LoadingComponent content='Loading App...'/>
 
   return (
+    
     <>
+      
       <ToastContainer position='bottom-right' hideProgressBar />
       <ModalContainer/>
       <Route exact path='/' component={HomePage} />
