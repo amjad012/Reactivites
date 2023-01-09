@@ -17,6 +17,8 @@ import LoadingComponent from './LoadingComponent';
 import ModalContainer from '../common/modals/ModalContainer';
 import PrfoilePage from '../../features/profiles/ProfilePage';
 import ProfilePage from '../../features/profiles/ProfilePage';
+import ScrollRestoration from 'react-scroll-restoration';
+
 
 function App() {
   const location = useLocation();
@@ -35,7 +37,7 @@ if(!commonStore.appLoaded) return <LoadingComponent content='Loading App...'/>
   return (
     
     <>
-      
+      <ScrollRestoration/>
       <ToastContainer position='bottom-right' hideProgressBar />
       <ModalContainer/>
       <Route exact path='/' component={HomePage} />
