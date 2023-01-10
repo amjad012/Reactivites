@@ -36,8 +36,13 @@ app.UseCors("CorsPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseDefaultFiles();//Running the client app on the dotnet Kestrel server
+app.UseStaticFiles();//Running the client app on the dotnet Kestrel server
+
 app.MapControllers();
 app.MapHub<ChatHub>("/chat");
+app.MapFallbackToController("Index", "Fallback");//Running the client app on the dotnet Kestrel server
+
 
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
