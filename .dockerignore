@@ -1,0 +1,4 @@
+#we don't need to copy these inside our container because these get
+#recreated when we do the dot net restore and dot net publish
+**/bin
+**/obj

@@ -6,11 +6,16 @@
         "Microsoft.Hosting.Lifetime": "Information"
       }
     },
-    "AllowedHosts": "*",
+    
     "Cloudinary":{
         "CloudName":"dwhy4fyjf",
         "ApiKey":"589186211885189",
         "ApiSecret": "Ryw9dCVCrSFxkG2xOADK6OVzfKE"
-    }
+    },
+    "ConnectionStrings": {
+      "DefaultConnection": "Server=host.docker.internal; Port=5432; User Id=admin; Password=secret; Database=reactivities"
+    },
+    "TokenKey":"super secret key",
+    "AllowedHosts": "*"
 
   }
