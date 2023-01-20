@@ -4,7 +4,7 @@ WORKDIR /app
 EXPOSE 8080
 
 # copy .csproj and restore as distinct layers
-COPY "" ""
+COPY "Reactivities.sln" "Reactivities.sln"
 COPY "API/API.csproj" "API/API.csproj"
 COPY "Application/Application.csproj" "Application/Application.csproj"
 COPY "Persistence/Persistence.csproj" "Persistence/Persistence.csproj"
